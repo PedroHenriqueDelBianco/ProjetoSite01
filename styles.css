@@ -1,0 +1,526 @@
+/* Importação de fontes elegantes */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    color: #2d2d2d;
+    background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 50%, #f8f6f3 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #8b6f7d 0%, #7a6b8a 50%, #6b6b7a 100%);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+    margin-bottom: 0.75rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    position: relative;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover::after {
+    width: 60%;
+}
+
+/* Menu Mobile */
+.menu-toggle {
+    display: none;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Main */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+section {
+    margin-bottom: 3rem;
+    padding: 3.5rem;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 24px;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+    animation: fadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section h2 {
+    margin-bottom: 2rem;
+    color: #5a4a52;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 1rem;
+    line-height: 1.3;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #8b6f7d, #7a6b8a);
+    border-radius: 2px;
+}
+
+section p {
+    color: #4a4a4a;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+
+/* Seção Serviços */
+#servicos ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#servicos li {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    padding: 1.8rem 2rem;
+    background: #faf9f7;
+    border-radius: 16px;
+    border-left: 3px solid #8b6f7d;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #4a4a4a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+#servicos li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 20px rgba(139, 111, 125, 0.12);
+    background: #f8f7f5;
+    border-left-color: #7a6b8a;
+}
+
+#servicos li strong {
+    color: #6b5a6a;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* Seção Sobre Nós */
+.terapeuta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    gap: 2.5rem;
+    padding: 2.5rem;
+    background: #faf9f7;
+    border-radius: 20px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.terapeuta:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+    background: #f8f7f5;
+}
+
+.terapeuta h3 {
+    color: #6b5a6a;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.terapeuta p {
+    color: #4a4a4a;
+    line-height: 1.85;
+    font-weight: 300;
+    font-size: 1.05rem;
+}
+
+.foto {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e8e5e3;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.terapeuta:hover .foto {
+    border-color: #d4c9d0;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Formulário de Contato */
+.form-group {
+    margin-bottom: 2.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+    color: #6b5a6a;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1.1rem 1.4rem;
+    border: 1.5px solid #e0ddd9;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #faf9f7;
+    color: #2d2d2d;
+    font-weight: 300;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8b6f7d;
+    box-shadow: 0 0 0 4px rgba(139, 111, 125, 0.08);
+    transform: translateY(-2px);
+    background-color: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+}
+
+.form-group .error-message {
+    color: #c88a8a;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: none;
+    padding-left: 0.5rem;
+    font-weight: 400;
+}
+
+.form-group.error input,
+.form-group.error textarea {
+    border-color: #c88a8a;
+    background-color: #fef5f5;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+.form-group.success input,
+.form-group.success textarea {
+    border-color: #9ab5a5;
+    background-color: #f5f8f6;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #8b6f7d 0%, #7a6b8a 100%);
+    color: white;
+    padding: 1.1rem 3rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(139, 111, 125, 0.25);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(139, 111, 125, 0.35);
+    background: linear-gradient(135deg, #7a5f6d 0%, #6a5b7a 100%);
+}
+
+.btn-submit:active {
+    transform: translateY(-1px);
+}
+
+.btn-submit:disabled {
+    background: #d4d4d4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.success-message {
+    background: linear-gradient(135deg, #9ab5a5 0%, #a5b5a8 100%);
+    color: white;
+    padding: 1.4rem;
+    border-radius: 16px;
+    margin-top: 1.5rem;
+    display: none;
+    box-shadow: 0 4px 20px rgba(154, 181, 165, 0.25);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.success-message.show {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Seção Outros Canais de Contato */
+.contact-info {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #e8e5e3;
+}
+
+.contact-info h3 {
+    color: #6b5a6a;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.75rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e8e5e3;
+    letter-spacing: 0.5px;
+}
+
+.contact-info p {
+    margin-bottom: 0.9rem;
+    font-size: 1.05rem;
+    color: #4a4a4a;
+    font-weight: 300;
+}
+
+.contact-info strong {
+    color: #6b5a6a;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* Botão WhatsApp Flutuante */
+.whatsapp-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #25d366 0%, #20ba5a 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    animation: pulse 2s infinite;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.15) translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-button svg {
+    width: 35px;
+    height: 35px;
+    fill: white;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+    }
+}
+
+/* Decoração sutil de fundo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(139, 111, 125, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(122, 107, 138, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(107, 107, 122, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #6b5a6a 0%, #5a4a5a 100%);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    margin-top: 4rem;
+    box-shadow: 0 -2px 30px rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    section {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+
+    section h2 {
+        font-size: 1.6rem;
+    }
+
+    .terapeuta {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .foto {
+        width: 140px;
+        height: 140px;
+    }
+
+    .whatsapp-button {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .whatsapp-button svg {
+        width: 30px;
+        height: 30px;
+    }
+}
