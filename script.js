@@ -1,3 +1,36 @@
+// Scroll Suave para Seções
+document.addEventListener('DOMContentLoaded', function() {
+    // Adicionar scroll suave para todos os links de navegação
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                // Calcular offset para compensar o header fixo
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight - 20;
+                
+                // Scroll suave
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Fechar menu mobile se estiver aberto
+                const nav = document.querySelector('nav ul');
+                if (window.innerWidth <= 768 && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                }
+            }
+        });
+    });
+});
+
 // Menu Mobile Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
@@ -8,16 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
             nav.classList.toggle('active');
         });
     }
-
-    // Fechar menu ao clicar em um link (mobile)
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                nav.classList.remove('active');
-            }
-        });
-    });
 });
 
 // Validação do Formulário de Contato
@@ -141,3 +164,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// não tenho ideia de como esse codigo ta funcionando, mas ele ta funcionando e boa 

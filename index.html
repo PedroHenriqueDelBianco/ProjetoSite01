@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- index.html - Landing Page -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -15,19 +15,98 @@
         <button class="menu-toggle" aria-label="Menu">☰</button>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html">Sobre Nós</a></li>
-                <li><a href="servicos.html">Serviços</a></li>
-                <li><a href="contato.html">Contato</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
+        <!-- Seção Home -->
         <section id="home">
             <h2>Bem-vindo ao Centro de Terapia Ana e Beatriz</h2>
             <p style="font-size: 1.15rem; line-height: 2; margin-bottom: 1.5rem;">Oferecemos terapias personalizadas para ajudar você a alcançar bem-estar emocional e mental. Navegue pelas seções para saber mais sobre nós, nossos serviços e como entrar em contato.</p>
             <p style="font-size: 1.1rem; line-height: 2; color: #7a7a7a; font-style: italic;">Nossa missão é proporcionar um ambiente acolhedor e seguro onde você possa trabalhar seus desafios emocionais e desenvolver ferramentas para uma vida mais plena e feliz. Estamos aqui para caminhar junto com você nessa jornada de autoconhecimento e crescimento pessoal.</p>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section id="sobre">
+            <h2>Sobre Nós</h2>
+            <p style="margin-bottom: 2rem;">O Centro de Terapia Ana e Beatriz foi fundado com a missão de oferecer cuidado psicológico de qualidade, acessível e humanizado. Acreditamos que cada pessoa é única e merece um tratamento personalizado.</p>
+            
+            <div class="terapeuta">
+                <img src="https://via.placeholder.com/150" alt="Foto de Ana Silva" class="foto">
+                <div>
+                    <h3>Ana Silva</h3>
+                    <p>Especialista em terapia cognitivo-comportamental, com mais de 10 anos de experiência em ajudar pacientes a superar ansiedade e depressão. Formada pela USP, com especialização em transtornos de ansiedade.</p>
+                </div>
+            </div>
+            <div class="terapeuta">
+                <img src="https://via.placeholder.com/150" alt="Foto de Beatriz Costa" class="foto">
+                <div>
+                    <h3>Beatriz Costa</h3>
+                    <p>Terapeuta familiar e de casal, focada em promover relacionamentos saudáveis e resolução de conflitos. Com formação em terapia sistêmica, trabalha há mais de 8 anos ajudando famílias e casais a construírem vínculos mais fortes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Serviços -->
+        <section id="servicos">
+            <h2>Serviços Oferecidos</h2>
+            <ul>
+                <li><strong>Terapia Individual:</strong> Sessões personalizadas focadas nas suas necessidades específicas</li>
+                <li><strong>Terapia de Casal:</strong> Trabalho conjunto para fortalecer relacionamentos e resolver conflitos</li>
+                <li><strong>Terapia Familiar:</strong> Acompanhamento para melhorar a dinâmica e comunicação familiar</li>
+                <li><strong>Grupos de Apoio:</strong> Espaço seguro para compartilhar experiências com pessoas que passam por situações similares</li>
+                <li><strong>Consultas Online:</strong> Atendimento remoto com a mesma qualidade e cuidado</li>
+            </ul>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contato">
+            <h2>Entre em Contato</h2>
+            <p>Agende sua sessão conosco! Preencha o formulário abaixo ou entre em contato pelos nossos canais.</p>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nome Completo *</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message">Nome deve ter pelo menos 3 caracteres</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message">Por favor, insira um e-mail válido</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefone *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                    <span class="error-message">Por favor, insira um telefone válido</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensagem *</label>
+                    <textarea id="message" name="message" placeholder="Conte-nos como podemos ajudar..." required></textarea>
+                    <span class="error-message">Mensagem deve ter pelo menos 10 caracteres</span>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+
+            <div class="success-message">
+                <strong>✓ Mensagem enviada com sucesso!</strong> Entraremos em contato em breve.
+            </div>
+
+            <div class="contact-info">
+                <h3>Outros Canais de Contato</h3>
+                <p><strong>Email:</strong> contato@terapeutasab.com</p>
+                <p><strong>Telefone:</strong> (11) 99999-9999</p>
+                <p><strong>Endereço:</strong> Rua das Flores, 123, São Paulo, SP</p>
+            </div>
         </section>
     </main>
 
