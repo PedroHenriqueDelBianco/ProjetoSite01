@@ -37,6 +37,17 @@ header {
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    padding: 1.2rem 1rem;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.12);
+}
+
+header.scrolled h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 header h1 {
@@ -127,6 +138,23 @@ section {
     border: 1px solid rgba(0, 0, 0, 0.04);
     scroll-margin-top: 100px; /* Espaço para o header fixo */
     transition: all 0.3s ease;
+}
+
+/* Fallback para quando JavaScript está desabilitado */
+.no-js section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Com JavaScript, animação de scroll */
+.js section {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.js section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 section:target {
@@ -389,6 +417,46 @@ section p {
     animation: fadeIn 0.5s ease-in;
 }
 
+/* Mensagem de erro geral */
+.general-error-message {
+    background: linear-gradient(135deg, #c88a8a 0%, #b87a7a 100%);
+    color: white;
+    padding: 1.4rem;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    display: none;
+    box-shadow: 0 4px 20px rgba(200, 138, 138, 0.25);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.general-error-message.show {
+    display: block;
+}
+
+/* Badge reCAPTCHA (invisível para v3) */
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+/* Indicador de carregamento */
+.loading-indicator {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 /* Seção Outros Canais de Contato */
 .contact-info {
     margin-top: 2.5rem;
@@ -545,5 +613,325 @@ footer p {
     .whatsapp-button svg {
         width: 30px;
         height: 30px;
+    }
+}
+
+/* Seção Depoimentos */
+.depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.depoimento-card {
+    background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    position: relative;
+}
+
+.depoimento-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 40px rgba(139, 111, 125, 0.15);
+}
+
+.depoimento-estrelas {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.depoimento-texto {
+    font-style: italic;
+    color: #4a4a4a;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.depoimento-autor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e8e5e3;
+}
+
+.depoimento-autor strong {
+    color: #6b5a6a;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.depoimento-autor span {
+    color: #7a7a7a;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* Grid de Serviços */
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.servico-card {
+    background: linear-gradient(135deg, #ffffff 0%, #faf9f7 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.servico-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 50px rgba(139, 111, 125, 0.2);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f7f5 100%);
+}
+
+.servico-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.servico-card h3 {
+    color: #6b5a6a;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.servico-card > p {
+    color: #4a4a4a;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    text-align: left;
+}
+
+.servico-beneficios {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.servico-beneficios li {
+    padding: 0.8rem 0;
+    padding-left: 1.8rem;
+    position: relative;
+    color: #4a4a4a;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.servico-beneficios li:last-child {
+    border-bottom: none;
+}
+
+.servico-beneficios li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #8b6f7d;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* FAQ */
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 1rem;
+    background: #faf9f7;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #6b5a6a;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #8b6f7d;
+    background: rgba(139, 111, 125, 0.05);
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #8b6f7d;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 2rem;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 2rem 1.5rem 2rem;
+}
+
+.faq-answer p {
+    color: #4a4a4a;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.faq-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.faq-cta p {
+    font-size: 1.2rem;
+    color: #6b5a6a;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, #8b6f7d 0%, #7a6b8a 100%);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(139, 111, 125, 0.25);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(139, 111, 125, 0.35);
+    background: linear-gradient(135deg, #7a5f6d 0%, #6a5b7a 100%);
+}
+
+/* Mapa */
+.map-container {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid #e8e5e3;
+}
+
+.map-container h3 {
+    color: #6b5a6a;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.map-container iframe {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+}
+
+/* Smooth scroll para elementos com animação */
+.depoimento-card,
+.servico-card {
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fallback para quando JavaScript está desabilitado */
+.no-js .depoimento-card,
+.no-js .servico-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsividade para novos elementos */
+@media (max-width: 768px) {
+    .depoimentos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .depoimento-card {
+        padding: 1.5rem;
+    }
+    
+    .servicos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .servico-card {
+        padding: 1.5rem;
+    }
+    
+    .servico-icon {
+        font-size: 3rem;
+    }
+    
+    .faq-question {
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .faq-answer {
+        padding: 0 1.5rem;
+    }
+    
+    .faq-item.active .faq-answer {
+        padding: 0 1.5rem 1.2rem 1.5rem;
+    }
+    
+    .map-container iframe {
+        height: 300px;
     }
 }

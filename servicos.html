@@ -4,10 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça nossos serviços: terapia individual, de casal, familiar, grupos de apoio e consultas online. Atendimento especializado em São Paulo.">
+    <meta name="keywords" content="terapia individual, terapia de casal, terapia familiar, grupos de apoio, terapia online, São Paulo">
     <title>Serviços - Centro de Terapia Ana e Beatriz</title>
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google.com https://formspree.io https://api.emailjs.com; frame-src https://www.google.com;">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
@@ -19,6 +31,7 @@
                 <li><a href="sobre.html">Sobre Nós</a></li>
                 <li><a href="servicos.html">Serviços</a></li>
                 <li><a href="contato.html">Contato</a></li>
+                <li><a href="faq.html">FAQ</a></li>
             </ul>
         </nav>
     </header>
@@ -26,13 +39,75 @@
     <main>
         <section id="servicos">
             <h2>Serviços Oferecidos</h2>
-            <ul>
-                <li><strong>Terapia Individual:</strong> Sessões personalizadas focadas nas suas necessidades específicas</li>
-                <li><strong>Terapia de Casal:</strong> Trabalho conjunto para fortalecer relacionamentos e resolver conflitos</li>
-                <li><strong>Terapia Familiar:</strong> Acompanhamento para melhorar a dinâmica e comunicação familiar</li>
-                <li><strong>Grupos de Apoio:</strong> Espaço seguro para compartilhar experiências com pessoas que passam por situações similares</li>
-                <li><strong>Consultas Online:</strong> Atendimento remoto com a mesma qualidade e cuidado</li>
-            </ul>
+            <p style="margin-bottom: 3rem; text-align: center; color: #6b5a6a; font-size: 1.1rem;">Oferecemos uma variedade de serviços terapêuticos para atender suas necessidades específicas</p>
+            
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="servico-icon">🧘</div>
+                    <h3>Terapia Individual</h3>
+                    <p>Sessões personalizadas focadas nas suas necessidades específicas. Trabalhamos juntos para desenvolver estratégias que ajudem você a alcançar seus objetivos pessoais e superar desafios emocionais.</p>
+                    <ul class="servico-beneficios">
+                        <li>Atendimento personalizado</li>
+                        <li>Foco em seus objetivos</li>
+                        <li>Ambiente seguro e confidencial</li>
+                    </ul>
+                </div>
+                
+                <div class="servico-card">
+                    <div class="servico-icon">💑</div>
+                    <h3>Terapia de Casal</h3>
+                    <p>Trabalho conjunto para fortalecer relacionamentos e resolver conflitos. Ajudamos casais a melhorar a comunicação, restaurar a intimidade e construir uma base sólida para o futuro.</p>
+                    <ul class="servico-beneficios">
+                        <li>Melhora na comunicação</li>
+                        <li>Resolução de conflitos</li>
+                        <li>Fortalecimento do vínculo</li>
+                    </ul>
+                </div>
+                
+                <div class="servico-card">
+                    <div class="servico-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Terapia Familiar</h3>
+                    <p>Acompanhamento para melhorar a dinâmica e comunicação familiar. Trabalhamos com toda a família para criar um ambiente mais harmonioso e compreensivo.</p>
+                    <ul class="servico-beneficios">
+                        <li>Melhora na dinâmica familiar</li>
+                        <li>Comunicação mais eficaz</li>
+                        <li>Resolução de conflitos familiares</li>
+                    </ul>
+                </div>
+                
+                <div class="servico-card">
+                    <div class="servico-icon">🤝</div>
+                    <h3>Grupos de Apoio</h3>
+                    <p>Espaço seguro para compartilhar experiências com pessoas que passam por situações similares. Os grupos oferecem suporte mútuo e aprendizado coletivo.</p>
+                    <ul class="servico-beneficios">
+                        <li>Suporte mútuo</li>
+                        <li>Compartilhamento de experiências</li>
+                        <li>Ambiente acolhedor</li>
+                    </ul>
+                </div>
+                
+                <div class="servico-card">
+                    <div class="servico-icon">💻</div>
+                    <h3>Consultas Online</h3>
+                    <p>Atendimento remoto com a mesma qualidade e cuidado das consultas presenciais. Ideal para quem busca flexibilidade e comodidade sem abrir mão do cuidado profissional.</p>
+                    <ul class="servico-beneficios">
+                        <li>Flexibilidade de horário</li>
+                        <li>Comodidade e segurança</li>
+                        <li>Mesma qualidade do presencial</li>
+                    </ul>
+                </div>
+                
+                <div class="servico-card">
+                    <div class="servico-icon">🎯</div>
+                    <h3>Terapia Especializada</h3>
+                    <p>Atendimento especializado para ansiedade, depressão, TOC, TEPT e outros transtornos. Utilizamos técnicas comprovadas como TCC e terapia sistêmica.</p>
+                    <ul class="servico-beneficios">
+                        <li>Técnicas comprovadas</li>
+                        <li>Especialização em transtornos</li>
+                        <li>Plano de tratamento personalizado</li>
+                    </ul>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -50,6 +125,9 @@
         <p>&copy; 2026 Centro de Terapia Ana e Beatriz. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts de Segurança e API -->
+    <script src="js/security.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

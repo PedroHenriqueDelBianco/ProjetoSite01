@@ -43,125 +43,221 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Validação do Formulário de Contato
-function validateForm() {
-    const form = document.getElementById('contactForm');
-    if (!form) return;
+// Validação do Formulário de Contato com Segurança Avançada
+let formValidator = null;
+let formAPI = null;
 
-    const name = document.getElementById('name');
-    const email = document.getElementById('email');
-    const phone = document.getElementById('phone');
-    const message = document.getElementById('message');
-    const submitBtn = document.querySelector('.btn-submit');
-    const successMessage = document.querySelector('.success-message');
-
-    let isValid = true;
-
-    // Validação do nome
-    const nameGroup = name.closest('.form-group');
-    if (name.value.trim().length < 3) {
-        nameGroup.classList.add('error');
-        isValid = false;
-    } else {
-        nameGroup.classList.remove('error');
-        nameGroup.classList.add('success');
-    }
-
-    // Validação do email
-    const emailGroup = email.closest('.form-group');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.value)) {
-        emailGroup.classList.add('error');
-        isValid = false;
-    } else {
-        emailGroup.classList.remove('error');
-        emailGroup.classList.add('success');
-    }
-
-    // Validação do telefone
-    const phoneGroup = phone.closest('.form-group');
-    const phoneRegex = /^[\d\s\(\)\-\+]+$/;
-    if (phone.value.trim().length < 10 || !phoneRegex.test(phone.value)) {
-        phoneGroup.classList.add('error');
-        isValid = false;
-    } else {
-        phoneGroup.classList.remove('error');
-        phoneGroup.classList.add('success');
-    }
-
-    // Validação da mensagem
-    const messageGroup = message.closest('.form-group');
-    if (message.value.trim().length < 10) {
-        messageGroup.classList.add('error');
-        isValid = false;
-    } else {
-        messageGroup.classList.remove('error');
-        messageGroup.classList.add('success');
-    }
-
-    return isValid;
-}
-
-// Event listeners para validação em tempo real
+// Inicializar validador e API quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     if (!form) return;
 
+    // Inicializar validador seguro
+    if (typeof SecureFormValidator !== 'undefined') {
+        formValidator = new SecureFormValidator('contactForm');
+    }
+
+    // Inicializar API de envio
+    if (typeof initFormAPI !== 'undefined') {
+        formAPI = initFormAPI();
+    }
+
+    // Validação em tempo real
     const inputs = form.querySelectorAll('input, textarea');
     inputs.forEach(input => {
         input.addEventListener('blur', function() {
-            validateForm();
+            if (formValidator) {
+                formValidator.clearErrors();
+                formValidator.validate();
+                formValidator.displayErrors();
+            }
         });
 
         input.addEventListener('input', function() {
             const group = this.closest('.form-group');
             if (group.classList.contains('error') && this.value.trim() !== '') {
-                validateForm();
+                if (formValidator) {
+                    formValidator.clearErrors();
+                    formValidator.validate();
+                    formValidator.displayErrors();
+                }
             }
         });
     });
 
-    // Submissão do formulário
-    form.addEventListener('submit', function(e) {
+    // Submissão do formulário com segurança
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        if (validateForm()) {
-            const submitBtn = form.querySelector('.btn-submit');
-            const successMessage = document.querySelector('.success-message');
-            
-            // Desabilitar botão durante envio
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
+        // Limpar erros anteriores
+        if (formValidator) {
+            formValidator.clearErrors();
+        }
 
-            // Simular envio (aqui você pode integrar com um backend real)
-            setTimeout(() => {
-                successMessage.classList.add('show');
+        // Validar formulário
+        let isValid = true;
+        if (formValidator) {
+            isValid = formValidator.validate();
+            if (!isValid) {
+                formValidator.displayErrors();
+                const firstError = form.querySelector('.form-group.error, .general-error-message');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+                return;
+            }
+        }
+
+        const submitBtn = form.querySelector('.btn-submit');
+        const successMessage = document.querySelector('.success-message');
+        
+        // Desabilitar botão durante envio
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando...';
+
+        try {
+            // Obter dados sanitizados
+            let formData = null;
+            if (formValidator) {
+                formData = formValidator.getSanitizedData();
+            } else {
+                // Fallback para validação básica
+                formData = {
+                    name: document.getElementById('name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    message: document.getElementById('message').value.trim()
+                };
+            }
+
+            // Enviar via API
+            if (formAPI) {
+                const result = await formAPI.submitForm(formData);
+                
+                // Sucesso
+                if (successMessage) {
+                    successMessage.classList.add('show');
+                    successMessage.innerHTML = `<strong>✓ ${result.message}</strong> Entraremos em contato em breve.`;
+                }
+                
                 form.reset();
                 
                 // Remover classes de sucesso
                 form.querySelectorAll('.form-group').forEach(group => {
-                    group.classList.remove('success');
+                    group.classList.remove('success', 'error');
                 });
-
-                // Reabilitar botão
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Enviar Mensagem';
 
                 // Ocultar mensagem de sucesso após 5 segundos
                 setTimeout(() => {
-                    successMessage.classList.remove('show');
+                    if (successMessage) {
+                        successMessage.classList.remove('show');
+                    }
                 }, 5000);
 
                 // Scroll para a mensagem de sucesso
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 1000);
-        } else {
-            // Scroll para o primeiro erro
-            const firstError = form.querySelector('.form-group.error');
-            if (firstError) {
-                firstError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                if (successMessage) {
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            } else {
+                throw new Error('API de envio não disponível');
             }
+        } catch (error) {
+            console.error('Erro ao enviar formulário:', error);
+            
+            // Exibir erro
+            if (formValidator) {
+                formValidator.showGeneralError(error.message || 'Erro ao enviar mensagem. Tente novamente mais tarde.');
+            } else {
+                alert(error.message || 'Erro ao enviar mensagem. Tente novamente mais tarde.');
+            }
+        } finally {
+            // Reabilitar botão
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar Mensagem';
         }
+    });
+});
+
+// FAQ Accordion
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', function() {
+            const isActive = item.classList.contains('active');
+            
+            // Fechar todos os outros itens
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle do item atual
+            item.classList.toggle('active', !isActive);
+        });
+    });
+});
+
+// Header scroll effect
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+});
+
+// Adicionar classe js ao body para indicar que JavaScript está ativo
+document.documentElement.classList.add('js');
+
+// Scroll animations
+document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+    
+    // Observar todas as seções
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Observar cards de depoimentos e serviços
+    const cards = document.querySelectorAll('.depoimento-card, .servico-card');
+    const cardObserver = new IntersectionObserver(function(entries) {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+                cardObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        cardObserver.observe(card);
     });
 });
 

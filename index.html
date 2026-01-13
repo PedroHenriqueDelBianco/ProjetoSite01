@@ -4,10 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Terapia Ana e Beatriz</title>
+    <meta name="description" content="Centro de Terapia Ana e Beatriz - Cuidado psicológico de qualidade, acessível e humanizado. Terapia individual, de casal, familiar e grupos de apoio em São Paulo.">
+    <meta name="keywords" content="terapia, psicologia, terapia de casal, terapia familiar, São Paulo, saúde mental">
+    <meta name="author" content="Centro de Terapia Ana e Beatriz">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google.com https://formspree.io https://api.emailjs.com; frame-src https://www.google.com;">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://terapeutasab.com/">
+    <meta property="og:title" content="Centro de Terapia Ana e Beatriz">
+    <meta property="og:description" content="Cuidado psicológico de qualidade, acessível e humanizado">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Centro de Terapia Ana e Beatriz">
+    <meta property="twitter:description" content="Cuidado psicológico de qualidade, acessível e humanizado">
+    
+    <title>Centro de Terapia Ana e Beatriz - Terapia e Psicologia em São Paulo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
@@ -18,7 +43,9 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#sobre">Sobre Nós</a></li>
                 <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
                 <li><a href="#contato">Contato</a></li>
+                <li><a href="faq.html">FAQ</a></li>
             </ul>
         </nav>
     </header>
@@ -62,6 +89,37 @@
                 <li><strong>Grupos de Apoio:</strong> Espaço seguro para compartilhar experiências com pessoas que passam por situações similares</li>
                 <li><strong>Consultas Online:</strong> Atendimento remoto com a mesma qualidade e cuidado</li>
             </ul>
+        </section>
+
+        <!-- Seção Depoimentos -->
+        <section id="depoimentos">
+            <h2>O Que Nossos Pacientes Dizem</h2>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="depoimento-estrelas">★★★★★</div>
+                    <p class="depoimento-texto">"A terapia com a Ana mudou minha vida. Consegui superar minha ansiedade e hoje me sinto muito mais confiante e em paz. O ambiente é acolhedor e profissional."</p>
+                    <div class="depoimento-autor">
+                        <strong>Maria S.</strong>
+                        <span>Paciente há 2 anos</span>
+                    </div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="depoimento-estrelas">★★★★★</div>
+                    <p class="depoimento-texto">"A terapia de casal com a Beatriz salvou nosso relacionamento. Aprendemos a nos comunicar melhor e hoje temos uma conexão muito mais forte e saudável."</p>
+                    <div class="depoimento-autor">
+                        <strong>João e Carla</strong>
+                        <span>Pacientes há 1 ano</span>
+                    </div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="depoimento-estrelas">★★★★★</div>
+                    <p class="depoimento-texto">"As consultas online são muito práticas e mantêm a mesma qualidade do atendimento presencial. Recomendo muito o centro!"</p>
+                    <div class="depoimento-autor">
+                        <strong>Roberto L.</strong>
+                        <span>Paciente há 6 meses</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Seção Contato -->
@@ -124,6 +182,9 @@
         <p>&copy; 2026 Centro de Terapia Ana e Beatriz. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts de Segurança e API -->
+    <script src="js/security.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
